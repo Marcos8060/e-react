@@ -35,3 +35,7 @@
 .editBtn:hover{
     color: white;
 }
+.sideIcons{
+    color: var(--blue);
+    font-size: 23px;
+}
