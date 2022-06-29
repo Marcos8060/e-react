@@ -1,0 +1,31 @@
+.app__info{
+    background: var(--white);
+    padding-top: 12vh;
+    font-family: poppins;
+    margin-bottom: 10vh;
+    color: var(--blue);
+}
+.underline{
+    border-bottom: 3px solid var(--yellow);
+    width: 40%;
+    margin: auto;
+}
+.top{
+    margin-bottom: 14vh;
+}
+.text{
+    margin-left: 40px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+.learnMore{
+    color: var(--yellow);
+}
+.homeImg{
+    border-radius: 30% 70% 70% 30% / 30% 42% 58% 70% ;
+}
+.check{
+    color: var(--yellow);
+    margin-right: 20px;
+    font-size: 20px;
+}
