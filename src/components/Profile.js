@@ -24,7 +24,7 @@ import { Link } from "react-router-dom";
 import Comment from "./Comment";
 import Footer from "./Footer";
 import { AiFillHome } from 'react-icons/ai'
-import { BiLogIn } from "react-icons/bi";
+import { RiLogoutBoxLine } from "react-icons/ri";
 
 
 const drawerWidth = 240;
@@ -160,7 +160,7 @@ export default function Profile() {
           </div>
           <Divider />
           <List>
-            {["Home", "Logout", "Drafts"].map((text, index) => (
+            {["Home", "Logout"].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
                   {index % 2 === 0 ? 
@@ -168,7 +168,7 @@ export default function Profile() {
                     <AiFillHome className="sideIcons" /> 
                   </Link>
                   : 
-                  <BiLogIn onClick={userLogout} className="sideIcons"  />
+                  <RiLogoutBoxLine onClick={userLogout} className="sideIcons"  />
                   }
                 </ListItemIcon>
                 <ListItemText primary={text} />
