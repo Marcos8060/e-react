@@ -1,3 +1,8 @@
 .maidsContainer{
     margin-top: 14vh;
 }
+.maidImg{
+    height: 140px;
+    width: 140px;
+    border-radius: 999px;
+}
