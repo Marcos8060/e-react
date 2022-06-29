@@ -17,3 +17,12 @@
     color: var(--yellow);
     margin-right: 10px;
 }
+.navbar-toggler:focus{
+    box-shadow: none;
+}
+.welcome{
+    margin-top: 1vh;
+}
+.username{
+    color: var(--yellow);
+}
