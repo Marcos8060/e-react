@@ -1,0 +1,19 @@
+.commentInput{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.commentInput:focus{
+    box-shadow: none;
+}
+.commentBtn{
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 7px;
+    border-radius: 4px;
+}
+.commentForm{
+    margin-bottom: 10vh;
+    margin-top: 4vh;
+}

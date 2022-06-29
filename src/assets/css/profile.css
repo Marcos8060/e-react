@@ -1,0 +1,37 @@
+
+.profileImg{
+    border-radius: 4px;
+    height: 120px;
+    width: 100%;
+    margin-top: 1vh;
+}
+.card1{
+    background: white;
+    box-shadow: 0px 1px 14px 1px lightgray;
+    margin: 3px;
+    padding: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: scale(1, 1);
+    transition: transform 0.5s ease;
+}
+.card1:hover{
+   transform: scale(1.1,1.1);
+}
+.profileCard{
+    display: flex;
+    justify-content: center;
+}
+.editBtn{
+    background: var(--yellow);
+    border: none;
+    color: white;
+    border-radius: 3px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+.editBtn:hover{
+    color: white;
+}
