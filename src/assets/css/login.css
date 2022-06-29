@@ -1,0 +1,31 @@
+.app__login{
+    margin-top: 7vh;
+}
+.card{
+    padding: 20px;
+    margin-top: 7vh;
+    margin-bottom: 8vh;
+    box-shadow: 0px 1px 14px 1px lightgray;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h3{
+    font-weight: bolder;
+}
+.btn8{
+    background: var(--blue);
+    border: none;
+    color: white;
+    padding: 7px;
+    width: 100%;
+    border-radius: 4px;
+}
+.input1:focus{
+    box-shadow: none;
+}
+p > .MuiSvgIcon-root{
+    font-size: 40px;
+}

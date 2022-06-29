@@ -3,19 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+import Register from './components/Auth/Register';
+import Login from './components/Auth/Login';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
     <React.StrictMode>
-      <Navbar />
       <Routes>
       <Route exact path='/' element={<App />}></Route>
+      <Route exact path='/register' element={<Register />}></Route>
+      <Route exact path='/login' element={<Login />}></Route>
       </Routes>
-      <Footer />
   </React.StrictMode>
   </Router>
 );
