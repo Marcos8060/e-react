@@ -1,22 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Register from './components/Auth/Register';
-import Login from './components/Auth/Login';
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
+import AuthProvider from "./context/AuthContext";
 
-
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
     <React.StrictMode>
-      <Routes>
-      <Route exact path='/' element={<App />}></Route>
-      <Route exact path='/register' element={<Register />}></Route>
-      <Route exact path='/login' element={<Login />}></Route>
-      </Routes>
-  </React.StrictMode>
+      <AuthProvider>
+        <Routes>
+          <Route exact path="/" element={<App />}></Route>
+          <Route exact path="/register" element={<Register />}></Route>
+          <Route exact path="/login" element={<Login />}></Route>
+        </Routes>
+      </AuthProvider>
+    </React.StrictMode>
   </Router>
 );
 

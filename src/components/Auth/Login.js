@@ -1,23 +1,22 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import { MdAccountCircle } from 'react-icons/md'
 import '../../assets/css/login.css'
 import { Link } from 'react-router-dom'
-
+import { userContext } from '../../context/AuthContext'
 
 function Login() {
-  
-
-
-    const handleChange = (e) =>{
-     
-      }
-
-    const handleSubmit = (e) =>{
-      
-      }
+    const { userLogin,message } = useContext(userContext)
 
   return (
     <>
+     { message && 
+
+        <div className="alert alert-danger alert-dismissible fade show text-center" role="alert">
+         { message }
+        <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+     }
       <div className="app__login">
         <div className="container">
           <div className="row form">
@@ -25,14 +24,13 @@ function Login() {
             <div className="card">
               <p className='text-center'><MdAccountCircle className='accountIcon' /></p>
               <h3 className='text-center'>Login</h3>
-              <form>
+              <form onSubmit={userLogin}>
                 <label htmlFor="email" className="form-label">Username</label>
                 <input 
                    name='username'
                    type="text" 
                    className="form-control input1" 
                    placeholder='username...' 
-                   onChange={handleChange}
                    />
                 <label htmlFor="password" className="form-label">Password</label>
                 <input 
@@ -40,13 +38,11 @@ function Login() {
                    type="password" 
                    className="form-control input1" 
                    placeholder='password...' 
-                   onChange={handleChange}
                    />
                    <br />
                    Don't have an account? <Link to="/register">Register</Link>
                 <button
                    className='btn8 mt-4'
-                   onClick={handleSubmit}
                    >Login</button>
               </form>
             </div>
