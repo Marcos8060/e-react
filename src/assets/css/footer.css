@@ -1,0 +1,26 @@
+.app__footer{
+    background: var(--blue);
+    color: white;
+    font-family: poppins;
+    padding-top: 7vh;
+    padding-bottom: 7vh;
+}
+small{
+    color: var(--white) !important;
+}
+h2{
+    font-weight: bolder;
+}
+.foot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.up{
+    color: var(--yellow);
+    background: var(--white);
+    font-size: 24px;
+}
+.footItem{
+    margin-top: 4vh;
+}
