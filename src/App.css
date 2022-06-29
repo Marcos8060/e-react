@@ -15,3 +15,6 @@ form > div > .form-control:focus{
 form > div > select:focus{
   box-shadow: none;
 }
+.rcw-conversation-container > .rcw-header {
+  background-color: red;
+}

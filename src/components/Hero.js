@@ -25,7 +25,7 @@ const Hero = () => {
     <div className='container'>
           <Widget 
             handleNewUserMessage={handleNewUserMessage}
-            title="Welcome to Emaids"
+            title='Welcome to Emaids'
             subtitle="Ask us anything!" 
             />
         <div className="row hero">
