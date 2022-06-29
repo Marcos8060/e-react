@@ -1,0 +1,19 @@
+.brandIcon{
+    color: var(--yellow);
+    font-size: 34px;
+}
+.brand{
+    font-size: 34px;
+    color: var(--blue);
+}
+.navbar{
+    background: white;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+}
+.nav-link{
+    color: var(--blue) !important;
+}
+.icon{
+    color: var(--yellow);
+    margin-right: 10px;
+}
