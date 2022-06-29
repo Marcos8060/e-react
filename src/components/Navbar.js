@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React,{useContext,useEffect,useRef,useState} from "react";
 import { HiMenuAlt1 } from 'react-icons/hi'
 import { BiLogIn } from 'react-icons/bi'
 import { SiGnuprivacyguard } from 'react-icons/si'
@@ -10,10 +10,31 @@ import { HiMenuAlt3 } from 'react-icons/hi'
 
 const Navbar = () => {
   const { user, userLogout } = useContext(userContext)
+  const [navBackground, setNavBackground] = useState(false);
+
+  const navRef = useRef();
+  navRef.current = navBackground;
+  useEffect(() => {
+    const handleScroll = () => {
+      const show = window.scrollY > 40;
+      if (navRef.current !== show) {
+        setNavBackground(show);
+      }
+    };
+    document.addEventListener("scroll", handleScroll);
+    return () => {
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg">
+      <nav className="navbar navbar-expand-lg fixed-top"
+      style={{
+        transition: "1s ease",
+        backgroundColor: navBackground ? "#F4F4F7" : "transparent",
+      }} 
+      >
         <div className="container">
           <Link to='/' className="navbar-brand d-flex align-items-center">
             <HiMenuAlt1 className="brandIcon" /><span className="brand">maids</span>
