@@ -12,7 +12,7 @@ const Hero = () => {
             </div>
             <div className="col-md-6">
                 <h1 className='heroTitle'>Get to <span className='yellow'>hire</span> some of the most professional housemaids in <span className='yellow'>Nairobi</span>.</h1>
-                <Link to='/about' className='heroBtn btn'>Get started</Link>
+                <Link to='/login' className='heroBtn btn'>Get started</Link>
             </div>
         </div>
     </div>

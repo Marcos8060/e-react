@@ -2,16 +2,39 @@ import React,{useState} from 'react'
 import '../../assets/css/register.css'
 import { MdAccountCircle } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { register } from './axios'
+import { useNavigate } from 'react-router-dom'
 
 function Register() {
+    const history = useNavigate();
+    const [formData,setFormData] = useState({
+        username:'',
+        email:'',
+        password:''
+    })
 
    const handleChange = (e) =>{
-   
+     setFormData({
+        ...formData,
+        [e.target.name] : e.target.value
+     })
     }
 
     const handleSubmit = (e) =>{
-      
+      e.preventDefault();
 
+      axios.post(register,{
+        username: formData.username,
+        email: formData.email,
+        password: formData.password
+      })
+      .then((res) =>{
+        history('/login')
+      })
+      .catch((err) =>{
+        console.error(err)
+      })
     }
       
 
@@ -24,7 +47,7 @@ function Register() {
           <div className="card">
             <p className='text-center'><MdAccountCircle className='accountIcon' /></p>
             <h3 className='text-center'>SignUp</h3>
-            <form>
+            <form onSubmit={handleSubmit}>
               <label htmlFor="username" className="form-label">Username</label>
               <input 
                   type="text" 
@@ -53,7 +76,6 @@ function Register() {
                    Already have an account? <Link to="/login">Login</Link>
               <button 
                   className='btn8 mt-4'
-                  onClick={handleSubmit}
                   >Sign Up</button>
             </form>
           </div>

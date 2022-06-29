@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import { MdAccountCircle } from 'react-icons/md'
 import '../../assets/css/login.css'
+import { Link } from 'react-router-dom'
 
 
 function Login() {
@@ -42,8 +43,8 @@ function Login() {
                    onChange={handleChange}
                    />
                    <br />
-                   Dont have an account? <a href="/register">Register</a>
-                <button 
+                   Don't have an account? <Link to="/register">Register</Link>
+                <button
                    className='btn8 mt-4'
                    onClick={handleSubmit}
                    >Login</button>
