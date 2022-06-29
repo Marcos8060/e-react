@@ -9,7 +9,7 @@ import { HiMenuAlt3 } from 'react-icons/hi'
 
 
 const Navbar = () => {
-  const { user } = useContext(userContext)
+  const { user, userLogout } = useContext(userContext)
 
   return (
     <>
@@ -63,6 +63,17 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="navbarDropdownMenuLink"
                 >
+                  { user ?
+                  
+                  <li>
+                    <p onClick={userLogout} className="dropdown-item logout">
+                      <BiLogIn className="icon" />Logout
+                    </p>
+                  </li>
+                  
+                  :
+
+                  <>
                   <li>
                     <Link to='/login' className="dropdown-item">
                       <BiLogIn className="icon" />Login
@@ -73,6 +84,9 @@ const Navbar = () => {
                       <SiGnuprivacyguard className="icon" />Register
                     </Link>
                   </li>
+                  </>
+
+                  }
                 </ul>
               </li>
             </ul>

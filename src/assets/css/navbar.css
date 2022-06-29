@@ -26,3 +26,6 @@
 .username{
     color: var(--yellow);
 }
+.logout{
+    cursor: pointer;
+}

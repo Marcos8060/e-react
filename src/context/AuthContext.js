@@ -38,10 +38,18 @@ const AuthProvider = ( { children })=>{
       }
     }
 
+    const userLogout = () =>{
+        setAuthTokens(null);
+        setUser(null);
+        localStorage.removeItem('authTokens')
+        history('/login')
+    }
+
 
 // contextData
     let contextData = {
         userLogin: userLogin,
+        userLogout: userLogout,
         user: user,
         authTokens: authTokens,
         message: message
