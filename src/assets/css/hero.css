@@ -1,0 +1,27 @@
+.yellow{
+    color: var(--yellow);
+}
+.heroTitle{
+    font-weight: 1200;
+}
+.hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heroBtn{
+    border: none;
+    background: var(--blue);
+    color: white;
+    height: 42px;
+    width: 170px;
+    border-radius: 7px;
+}
+.heroBtn:hover{
+    background: var(--yellow);
+    color: white;
+    transition: 1s;
+}
+.heroImg{
+    margin-top: 4vh;
+}
