@@ -186,6 +186,9 @@ export default function Profile() {
             <div className="row profileCard">
               <div className="col-md-2">
                 <img className="img-fluid profileImg" src={image} alt="" />
+                <Link to="/edit" className="createBtn btn mt-4">
+                  Create Profile
+                </Link>
                 <Link to="/edit" className="editBtn btn">
                   Edit Profile
                 </Link>
