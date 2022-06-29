@@ -5,6 +5,17 @@
     width: 100%;
     margin-top: 1vh;
 }
+.card2{
+    background: white;
+    box-shadow: 0px 1px 14px 1px lightgray;
+    margin: 3px;
+    padding: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transform: scale(1, 1);
+    transition: transform 0.5s ease;
+    margin-top: 4vh;
+}
 .card1{
     background: white;
     box-shadow: 0px 1px 14px 1px lightgray;

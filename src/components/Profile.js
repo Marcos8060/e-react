@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -15,8 +15,6 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import { userContext } from "../context/AuthContext";
 import "../assets/css/profile.css";
 import image from "../assets/images/clean.jpg";
@@ -25,6 +23,8 @@ import Comment from "./Comment";
 import Footer from "./Footer";
 import { AiFillHome } from 'react-icons/ai'
 import { RiLogoutBoxLine } from "react-icons/ri";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 
 const drawerWidth = 240;
@@ -94,6 +94,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Profile() {
   const { user,userLogout } = useContext(userContext);
+
+  // modal
+  const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
+  const [fullscreen, setFullscreen] = useState(true);
+  const [show, setShow] = useState(false);
+  // end of modal
+
+  function handleShow(breakpoint) {
+    setFullscreen(breakpoint);
+    setShow(true);
+  }
+
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -186,7 +198,7 @@ export default function Profile() {
             <div className="row profileCard">
               <div className="col-md-2">
                 <img className="img-fluid profileImg" src={image} alt="" />
-                <Link to="/edit" className="createBtn btn mt-4">
+                <Link to='/create' className="createBtn btn mt-4">
                   Create Profile
                 </Link>
                 <Link to="/edit" className="editBtn btn">

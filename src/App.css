@@ -9,3 +9,9 @@
   --blue: #17224D;
   --yellow: #EE7E28;
 }
+form > div > .form-control:focus{
+  box-shadow: none;
+}
+form > div > select:focus{
+  box-shadow: none;
+}

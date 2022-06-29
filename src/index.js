@@ -7,6 +7,7 @@ import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import AuthProvider from "./context/AuthContext";
 import Profile from "./components/Profile";
+import ProfileCreate from "./components/ProfileCreate";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,6 +19,7 @@ root.render(
           <Route exact path="/register" element={<Register />}></Route>
           <Route exact path="/login" element={<Login />}></Route>
           <Route exact path="/profile" element={<Profile />}></Route>
+          <Route exact path="/create" element={<ProfileCreate />}></Route>
         </Routes>
       </AuthProvider>
     </React.StrictMode>
