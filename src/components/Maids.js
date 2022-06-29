@@ -53,10 +53,10 @@ const Maids = () => {
             />
             <div className="row" style={{ marginTop: '7vh',marginBottom:'7vh'}}>
                 { people.map((maid)=>(
-                    <div className="col-md-3 text-center">
+                    <div className="col-md-3 text-center" key={maid.id}>
                     <div className="card1 mb-3">
                         <img className='img-fluid maidImg' src={maid.image} alt="" />
-                        <h5>{maid.fullname}</h5>
+                        <h6>Name : {maid.full_name}</h6>
                         <hr />
                         <p>Contract : {maid.contract}</p>
                         <Link to='/profile' className='btn createBtn'>View Profile</Link>

@@ -2,6 +2,8 @@ import React,{useState} from "react";
 import axios from "axios";
 import { profile } from "./Auth/axios";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const ProfileCreate = () => {
     const history = useNavigate();
@@ -52,16 +54,19 @@ const ProfileCreate = () => {
         })
         .then((res) =>{
             console.log('post is successful');
+            toast.success('Your profile is created successfully!')
             history('/profile')
         })
         .catch((err) =>{
             console.log(err.response.status);
+            toast.error('There is a problem!')
         })
     }
   return (
     <div className="container">
+      <ToastContainer />
       <div className="card2">
-        <form className="row" onSubmit={handleSubmit}>
+        <form className="row">
           <div className="col-md-6">
             <label htmlFor="picture" className="form-label">
               Profile picture
@@ -142,7 +147,7 @@ const ProfileCreate = () => {
               placeholder="marital status"
               onChange={handleChange}
             />
-            <button className="createBtn mt-3">Submit</button>
+            <button onClick={handleSubmit} className="createBtn mt-3">Submit</button>
           </div>
         </form>
       </div>
