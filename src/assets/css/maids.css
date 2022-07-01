@@ -2,7 +2,30 @@
     margin-top: 14vh;
 }
 .maidImg{
-    height: 140px;
-    width: 140px;
-    border-radius: 999px;
+    height: 100px;
+    width: 100px;
+    border-radius: 7px;
+    object-fit: contain;
+}
+.card3{
+    box-shadow: 0px 1px 14px 1px lightgray;
+    border-radius: 4px;
+    height: 24vh;
+    padding: 10px;
+    cursor: pointer;
+    transform: scale(1, 1);
+    transition: transform 0.5s ease;
+}
+
+.card3:hover{
+   transform: scale(1.1,1.1);
+}
+
+.maidBtn{
+    background: var(--blue);
+    color: white;
+    font-size: 10px;
+}
+.maidBtn:hover{
+    color: white;
 }

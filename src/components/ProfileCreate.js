@@ -1,9 +1,10 @@
-import React,{useState} from "react";
+import React,{useState,useContext} from "react";
 import axios from "axios";
 import { profile } from "./Auth/axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ProfileCreate = () => {
     const history = useNavigate();
@@ -17,7 +18,7 @@ const ProfileCreate = () => {
         experience:'',
         contract:'',
         job:'',
-        marriage:''
+        marital_status:'',
     })
 
     const handleChange = (e)=>{
@@ -40,12 +41,12 @@ const ProfileCreate = () => {
         if (formData.image)
         form_data.append("image", formData.image, formData.image.name);
         form_data.append("full_name", formData.full_name);
-        form_data.append("user", formData.user);
         form_data.append("email", formData.email);
         form_data.append("age", formData.age);
         form_data.append("location", formData.location);
         form_data.append("experience", formData.experience);
         form_data.append("bio", formData.bio);
+        form_data.append("marital_status", formData.marital_status);
 
         axios.post(profile, form_data,{
             headers:{
@@ -54,11 +55,13 @@ const ProfileCreate = () => {
         })
         .then((res) =>{
             console.log('post is successful');
+            console.log(res.data)
             toast.success('Your profile is created successfully!')
             history('/profile')
         })
         .catch((err) =>{
             console.log(err.response.status);
+            console.log(err.response.data)
             toast.error('There is a problem!')
         })
     }
@@ -76,7 +79,7 @@ const ProfileCreate = () => {
               FullName
             </label>
             <input
-               name="full_name"
+              name="full_name"
               type="text"
               className="form-control"
               placeholder="fullname"
@@ -141,7 +144,7 @@ const ProfileCreate = () => {
               Marital Status
             </label>
             <input
-              name="marriage"
+              name="marital_status"
               type="text"
               className="form-control"
               placeholder="marital status"
