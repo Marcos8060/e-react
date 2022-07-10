@@ -1,11 +1,12 @@
 import React,{createContext,useState} from "react";
 import jwt_decode from "jwt-decode";
 import { login } from "../components/Auth/axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 
 export const userContext = createContext();
 
 const AuthProvider = ( { children })=>{
+    const { id } = useParams();
     const history = useNavigate();
     const [authTokens,setAuthTokens] = useState(()=> localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     const [user,setUser] = useState(()=> localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null);
@@ -28,7 +29,9 @@ const AuthProvider = ( { children })=>{
         setAuthTokens(data)
         setUser(jwt_decode(data.access))
         localStorage.setItem('authTokens', JSON.stringify(data))
-        history('/')
+        console.log(user)
+        console.log(user.username)
+        history(`${user.username}/profile`)
       }else if(response.status === 401){
         setMessage('User does not exist!')
       }else if(response.status === 400){

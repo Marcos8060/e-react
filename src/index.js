@@ -7,7 +7,7 @@ import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import AuthProvider from "./context/AuthContext";
 import Profile from "./components/Profile";
-import ProfileCreate from "./components/ProfileCreate";
+import ProfileEdit from "./components/ProfileEdit";
 import Maids from "./components/Maids";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -19,8 +19,8 @@ root.render(
           <Route exact path="/" element={<App />}></Route>
           <Route exact path="/register" element={<Register />}></Route>
           <Route exact path="/login" element={<Login />}></Route>
-          <Route exact path="/profile" element={<Profile />}></Route>
-          <Route exact path="/create" element={<ProfileCreate />}></Route>
+          <Route exact path=":username/profile" element={<Profile />}></Route>
+          <Route exact path="/create/:id" element={<ProfileEdit />}></Route>
           <Route exact path="/maids" element={<Maids />}></Route>
         </Routes>
       </AuthProvider>

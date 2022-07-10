@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import clsx from "clsx";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -17,15 +17,13 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { userContext } from "../context/AuthContext";
 import "../assets/css/profile.css";
-import image from "../assets/images/clean.jpg";
 import { Link } from "react-router-dom";
-import Comment from "./Comment";
 import Footer from "./Footer";
-import { AiFillHome } from 'react-icons/ai'
+import { AiFillHome } from "react-icons/ai";
 import { RiLogoutBoxLine } from "react-icons/ri";
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import ProfileEdit from "./ProfileEdit";
 
 const drawerWidth = 240;
 
@@ -93,18 +91,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Profile() {
-  const { user,userLogout } = useContext(userContext);
-
-  // modal
-  const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
-  const [fullscreen, setFullscreen] = useState(true);
-  const [show, setShow] = useState(false);
-  // end of modal
-
-  function handleShow(breakpoint) {
-    setFullscreen(breakpoint);
-    setShow(true);
-  }
+  const { id } = useParams();
+  const { user, userLogout } = useContext(userContext);
+  const [profile, setProfile] = useState([]);
 
   const classes = useStyles();
   const theme = useTheme();
@@ -117,6 +106,18 @@ export default function Profile() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    axios
+      .get(`http://127.0.0.1:8000/api/${user.username}/profile/`)
+      .then((res) => {
+        console.log(res.data);
+        setProfile(res.data);
+      })
+      .catch((err) => {
+        console.log(err.response.status);
+      });
+  }, []);
 
   return (
     <>
@@ -142,9 +143,7 @@ export default function Profile() {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap>
-                {
-                    user &&  <p>Welcome {user.username}</p>
-                }
+              {user && <p>Welcome {user.username}</p>}
             </Typography>
           </Toolbar>
         </AppBar>
@@ -175,13 +174,16 @@ export default function Profile() {
             {["Home", "Logout"].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
-                  {index % 2 === 0 ? 
-                  <Link to='/'>
-                    <AiFillHome className="sideIcons" /> 
-                  </Link>
-                  : 
-                  <RiLogoutBoxLine onClick={userLogout} className="sideIcons"  />
-                  }
+                  {index % 2 === 0 ? (
+                    <Link to="/">
+                      <AiFillHome className="sideIcons" />
+                    </Link>
+                  ) : (
+                    <RiLogoutBoxLine
+                      onClick={userLogout}
+                      className="sideIcons"
+                    />
+                  )}
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItem>
@@ -197,43 +199,38 @@ export default function Profile() {
           <div className="container-fluid">
             <div className="row profileCard">
               <div className="col-md-2">
-                <img className="img-fluid profileImg" src={image} alt="" />
-                <Link to='/create' className="createBtn btn mt-4">
-                  Create Profile
-                </Link>
-                <Link to="/edit" className="editBtn btn">
+                <img
+                  className="img-fluid profileImg"
+                  src={profile.image}
+                  alt=""
+                />
+                <Link to="/edit" className="editBtn btn mt-4">
                   Edit Profile
                 </Link>
               </div>
               <div className="col-md-4 card1">
-                <h3>Marcos Ochieng</h3>
+                <h3>{profile.name}</h3>
                 <p>
                   <span className="badge bg-primary">Software Engineer</span>
                 </p>
                 <h4>About</h4>
-                <span>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Repellendus quidem minus assumenda soluta rem natus delectus
-                  expedita accusantium molestias quibusdam?
-                </span>
+                <span>{profile.bio}</span>
               </div>
               <div className="col-md-5 card1 text-center">
                 <div className="row">
                   <div className="col-md-6">
                     <h5>Experience</h5>
-                    <p>4 years</p>
-                    <h5>Salary Range</h5>
-                    <p>10,000 - 20,000</p>
+                    <p>{profile.experience} years.</p>
                     <h5>Contract</h5>
-                    <p>Full Time</p>
+                    <p>{profile.contract}</p>
                   </div>
                   <div className="col-md-6">
                     <h5>Location</h5>
-                    <p>Kiambu</p>
+                    <p>{profile.location}</p>
                     <h5>Age</h5>
-                    <p>33</p>
+                    <p>{profile.age}</p>
                     <h5>Member since</h5>
-                    <p>Yesterday</p>
+                    <p>{profile.date_joined}</p>
                   </div>
                 </div>
               </div>
@@ -243,18 +240,20 @@ export default function Profile() {
               <div className="col-md-6 mb-4">
                 <div className="card1">
                   <h5>Personal Information</h5>
-                  <p>Email : marcos@gmail.com</p>
-                  <p>Age : 34</p>
-                  <p>Marital Status : Single</p>
+                  <p>Email : {profile.email}</p>
+                  <p>Age : {profile.age}</p>
+                  <p>Marital Status : {profile.marital_status}</p>
                   <p>
                     Job status:{" "}
-                    <span className="badge bg-primary">Currently Available</span>
+                    <span className="badge bg-primary">
+                      {profile.job_status}
+                    </span>
                   </p>
                 </div>
               </div>
-              <div className="col-md-6">
-                <Comment />
-              </div>
+            </div>
+            <div className="col-md-6">
+              <ProfileEdit />
             </div>
           </div>
         </main>

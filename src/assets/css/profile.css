@@ -4,6 +4,7 @@
     height: 120px;
     width: 100%;
     margin-top: 1vh;
+    object-fit: contain;
 }
 .card2{
     background: white;
@@ -23,11 +24,11 @@
     padding: 20px;
     border-radius: 4px;
     cursor: pointer;
-    transform: scale(1, 1);
+    transform: scale(0.9, 0.9);
     transition: transform 0.5s ease;
 }
 .card1:hover{
-   transform: scale(1.1,1.1);
+   transform: scale(1,1);
 }
 .profileCard{
     display: flex;
